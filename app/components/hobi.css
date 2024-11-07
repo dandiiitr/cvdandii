@@ -1,0 +1,124 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Styling for the whole gallery section */
+.gallery-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff; /* Latar belakang putih */
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Shadow halus untuk kedalaman */
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Title for the section */
+.gallery-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333; /* Warna hitam untuk judul */
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Efek bayangan halus pada teks */
+  animation: fadeIn 2s ease-out;
+  width: 100%;
+}
+
+/* Gallery layout with flex */
+.gallery {
+  display: flex;
+  gap: 20px; /* Jarak antar kartu */
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto; /* Untuk scroll horizontal */
+  scroll-snap-type: x mandatory; /* Snap ke setiap kartu saat di scroll */
+}
+
+/* Card for each hobby */
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  width: 350px; /* Ukuran tetap untuk setiap kartu */
+  height: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, filter 0.3s ease;
+  transform: translateY(10px); /* Efek pergeseran kartu ke bawah */
+  will-change: transform, box-shadow;
+  scroll-snap-align: start;
+  background-color: #f4f4f4; /* Warna latar belakang kartu abu-abu terang */
+}
+
+/* Hover effect on cards */
+.gallery-card:hover {
+  transform: translateY(-10px); /* Efek pergeseran kartu ke atas */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Bayangan lebih besar pada hover */
+  filter: brightness(1.05); /* Sedikit mencerahkan gambar */
+}
+
+/* Image styling */
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-out;
+  border-radius: 15px;
+}
+
+/* Hover effect for image */
+.gallery-card:hover .gallery-image {
+  transform: scale(1.1); /* Zoom in saat hover */
+}
+
+/* Caption styling */
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6); /* Latar belakang transparan hitam */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Efek bayangan pada teks */
+  transform: translateY(100%); /* Menyembunyikan caption saat tidak hover */
+  transition: transform 0.3s ease;
+}
+
+/* Show caption with slide-up effect */
+.gallery-card:hover .gallery-caption {
+  transform: translateY(0); /* Tampilkan caption dengan efek geser */
+}
+
+/* Optional mobile styling */
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column; /* Menata kartu secara vertikal pada layar kecil */
+    overflow-x: hidden; /* Menonaktifkan scroll horizontal pada perangkat kecil */
+  }
+
+  .gallery-title {
+    font-size: 2rem;
+  }
+}
+
+/* Animation for fade-in effect on title */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
